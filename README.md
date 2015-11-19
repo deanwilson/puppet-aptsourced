@@ -8,27 +8,25 @@ I'd like to say thank you to all the people that have sent me nice emails about 
 
 ## Puppet APT Source.list type ##
 
-
-Manage Debian / Ubuntu source.list files under /etc/apt/sources.list.d/
-
-Copyright - Dean Wilson dean.wilson@gmail.com
-
-License: GPLv2
+Manage Debian / Ubuntu source.list files under `/etc/apt/sources.list.d`
 
 
 Usage:
 
-        aptsourced { 'backports':
-            uri          => 'http://www.backports.org/debian',
-            distribution => $lsbdistcodename,
-            components   => [ 'main', 'contrib' ],
-        }
+    aptsourced { 'backports':
+      uri          => 'http://www.backports.org/debian',
+      distribution => $lsbdistcodename,
+      components   => [ 'main', 'contrib' ],
+    }
 
-        aptsourced { 'internalrepo.list':
-            repotype     => 'deb-src'
-            uri          => 'http://localhost/debian',
-            distribution => $lsbdistcodename,
-            components   => [ 'main', 'nonfree' ],
-            ensure       => present   # optional
-        }
+    aptsourced { 'internalrepo.list':
+      ensure       => 'present',   # optional
+      repotype     => 'deb-src',
+      uri          => 'http://localhost/debian',
+      distribution => $::lsbdistcodename,
+      components   => [ 'main', 'nonfree' ],
+    }
 
+Copyright - [Dean Wilson](http://www.unixdaemon.net) dean.wilson@gmail.com
+
+License: GPLv2
